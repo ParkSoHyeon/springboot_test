@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.zerock.controller.SampleController;
 
-@RunWith(SpringRunner.class)	//수정 완료!!!
+@RunWith(SpringRunner.class)	//스프링의 테스트 컨텍스트 프레임워크 JUnit 확장 기능 지정
 @WebMvcTest(SampleController.class)	//특정 컨트롤러 지정
 public class SampleControllerTest {
 	@Autowired
