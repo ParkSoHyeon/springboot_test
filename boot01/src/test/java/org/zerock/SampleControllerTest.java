@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.zerock.controller.SampleController;
 
-@RunWith(SpringRunner.class)	//수정 ?
+@RunWith(SpringRunner.class)	//수정 완료!!!
 @WebMvcTest(SampleController.class)	//특정 컨트롤러 지정
 public class SampleControllerTest {
 	@Autowired
