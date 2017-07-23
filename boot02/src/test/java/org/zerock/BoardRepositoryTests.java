@@ -10,55 +10,54 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.zerock.domain.Board;
 import org.zerock.persistence.BoardRepository;
 
+@SuppressWarnings("unused")
 @RunWith(SpringRunner.class)
-@SpringBootTest()
+@SpringBootTest
 public class BoardRepositoryTests {
 	@Autowired
-	private BoardRepository boardRepo;
+	BoardRepository repo;
 	
-	/*@Test
-	public void inspect() {
-		Class<?> clz = boardRepo.getClass();
-		
-		System.out.println(clz.getName());
-		
-		Class<?>[] interfaces = clz.getInterfaces();
-		
-		Stream.of(interfaces).forEach(inter -> System.out.println(inter.getName()));
-		
-		Class<?> superClasses = clz.getSuperclass();
-		
-		System.out.println(superClasses.getName());
-	}*/
+//	@Test
+//	public void inspect() {
+//		Class<?> clz = repo.getClass();
+//		
+//		System.out.println(clz.getName());
+//		
+//		Class<?>[] interfaces = clz.getInterfaces();
+//		
+//		Stream.of(interfaces).forEach(inter -> System.out.println(inter.getName()));
+//		
+//		Class<?> superclass = clz.getSuperclass();
+//		
+//		System.out.println(superclass.getName());
+//	}
 	
 	@Test
 	public void testInsert() {
 		Board board = new Board();
-		board.setTitle("게시물의 제목");
-		board.setContent("게시물 내용 넣기");
-		board.setWriter("elmo");
+		board.setTitle("게시물의 제목2");
+		board.setContent("게시물 내용 넣기2");
+		board.setWriter("elmo2");
 		
-		boardRepo.save(board);
+		repo.save(board);
 	}
-	
-	/*@Test
-	public void testUpdate() {
-		Board board = boardRepo.findOne(1L);
-		
-		board.setTitle("제목 수정함");
-		
-		boardRepo.save(board);
-	}*/
 	
 	@Test
 	public void testRead() {
-		Board board = boardRepo.findOne(1L);
+		System.out.println(repo.findOne(1L));
+	}
+	
+	@Test
+	public void testUpdate() {
+		Board b = repo.findOne(2L);
 		
-		System.out.println(board);
+		b.setTitle("수정된 제목");
+		
+		repo.save(b);
 	}
 	
 	@Test
 	public void testDelete() {
-		boardRepo.delete(1L);
+		repo.delete(5L);
 	}
 }

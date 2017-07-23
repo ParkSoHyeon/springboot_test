@@ -24,7 +24,6 @@ public class Board {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long bno;
-	
 	private String title;
 	private String content;
 	private String writer;

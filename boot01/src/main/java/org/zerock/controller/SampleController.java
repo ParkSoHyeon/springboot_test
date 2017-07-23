@@ -6,23 +6,21 @@ import org.zerock.domain.SampleVO;
 
 @RestController
 public class SampleController {
-
 	@GetMapping("/hello")
 	public String sayHello() {
-
-		return "Hello World!!!!";
+		return "Hello World";
 	}
-
+	
 	@GetMapping("/sample")
 	public SampleVO makeSample() {
-
 		SampleVO vo = new SampleVO();
-		vo.setVal1("v1");
-		vo.setVal2("v2");
-		vo.setVal3("v3");
+		
+		vo.setVal1("1");
+		vo.setVal2("2");
+		vo.setVal3("3");
+		
+		System.out.println(vo);
 		
 		return vo;
-
 	}
-
 }

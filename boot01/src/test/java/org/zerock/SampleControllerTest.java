@@ -13,19 +13,20 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.zerock.controller.SampleController;
 
-@RunWith(SpringRunner.class)	//스프링의 테스트 컨텍스트 프레임워크 JUnit 확장 기능 지정
-@WebMvcTest(SampleController.class)	//특정 컨트롤러 지정
+@RunWith(SpringRunner.class)
+@WebMvcTest(SampleController.class)
 public class SampleControllerTest {
 	@Autowired
 	MockMvc mock;
 	
 	@Test
-	public void testHello() throws Exception{
+	public void testHello() throws Exception {
 		MvcResult result = mock.perform(get("/hello"))
 				.andExpect(status().isOk())
-				
-				.andExpect(content().string("Hello World!!!!")).andReturn();
+				.andExpect(content().string("Hello World"))
+				.andReturn();
 		
 		System.out.println(result.getResponse().getContentAsString());
+		
 	}
 }
