@@ -2,8 +2,6 @@ package org.zerock;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +36,7 @@ public class ProfileTests {
 			
 			memberRepo.save(m);
 		});
-	}
+	}*/
 	
 	@Test
 	public void testInsertProfile() {
@@ -64,7 +62,7 @@ public class ProfileTests {
 		List<Object[]> results = memberRepo.getMemberWithProfileCount("user3");
 		
 		results.forEach(m -> System.out.println(Arrays.toString(m)));
-	}*/
+	}
 	
 	@Test
 	public void testFetchJoin2() {
