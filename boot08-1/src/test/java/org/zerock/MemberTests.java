@@ -1,18 +1,17 @@
 package org.zerock;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
-
-import javax.management.relation.Role;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.zerock.domain.Member;
-import org.zerock.domain.MemberRole;
 import org.zerock.persistence.MemberRepository;
 
 import lombok.extern.java.Log;
@@ -24,6 +23,9 @@ import lombok.extern.java.Log;
 public class MemberTests {
 	@Autowired
 	MemberRepository memberRepo;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
 	
 	/*@Test
 	public void testInsert(){
@@ -49,6 +51,21 @@ public class MemberTests {
 			memberRepo.save(m);
 		}
 	}*/
+	
+	@Test
+	public void testUpdateOldMember(){
+		List<String> ids = new ArrayList<>();
+		
+		for(int i = 0; i <= 100; i++){
+			ids.add("user" + i);
+		}
+		
+		memberRepo.findAllById(ids).forEach(m -> {
+			m.setUpw(passwordEncoder.encode(m.getUpw()));
+			
+			memberRepo.save(m);
+		});
+	}
 	
 	@Test
 	public void testRead(){
